@@ -1,5 +1,6 @@
 package tech.mateuslll.adapter.in.web;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,7 @@ public class UserControllerAdapterIn {
     }
 
     @PostMapping
-    public ResponseEntity<CreateUserResp> createUser(@RequestBody CreateUserReq req) {
+    public ResponseEntity<CreateUserResp> createUser(@RequestBody @Valid CreateUserReq req) {
 
         var userCreated = createrUserPortIn.execute(req.toDomain());
         var body = CreateUserResp.fromDomain(userCreated);

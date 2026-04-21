@@ -10,6 +10,8 @@ import tech.mateuslll.core.domain.User;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static tech.mateuslll.config.Constants.EMAIL_INDEX;
+
 @DynamoDbBean
 @TableName(name = "tb_users")
 public class UserEntity {
@@ -34,6 +36,17 @@ public class UserEntity {
         return entity;
     }
 
+    public User toDomain() {
+        return new User(
+                this.userId,
+                this.email,
+                this.password,
+                this.nickname,
+                this.createdAt,
+                this.updatedAt
+        );
+    }
+
     //aqui no tem problema expor os getters e setters m prtica seria expor o domain
 
     @DynamoDbPartitionKey
@@ -46,7 +59,7 @@ public class UserEntity {
         this.userId = userId;
     }
 
-    @DynamoDbSecondaryPartitionKey(indexNames = "email-index")
+    @DynamoDbSecondaryPartitionKey(indexNames = EMAIL_INDEX)
     @DynamoDbAttribute("email")
     public String getEmail() {
         return email;
@@ -87,6 +100,5 @@ public class UserEntity {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
 
 }
