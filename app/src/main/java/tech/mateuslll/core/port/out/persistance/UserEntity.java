@@ -18,8 +18,8 @@ public class UserEntity {
 
     private UUID userId;
     private String email;
-    private String password;
     private String nickname;
+    private String password;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -40,8 +40,8 @@ public class UserEntity {
         return new User(
                 this.userId,
                 this.email,
-                this.password,
                 this.nickname,
+                this.password,
                 this.createdAt,
                 this.updatedAt
         );
@@ -69,6 +69,7 @@ public class UserEntity {
         this.email = email;
     }
 
+    @DynamoDbAttribute("password")
     public String getPassword() {
         return password;
     }
@@ -77,6 +78,7 @@ public class UserEntity {
         this.password = password;
     }
 
+    @DynamoDbAttribute("nickname")
     public String getNickname() {
         return nickname;
     }
@@ -85,6 +87,7 @@ public class UserEntity {
         this.nickname = nickname;
     }
 
+    @DynamoDbAttribute("updated_at")
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -93,6 +96,7 @@ public class UserEntity {
         this.updatedAt = updatedAt;
     }
 
+    @DynamoDbAttribute("created_at")
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

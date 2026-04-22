@@ -11,7 +11,7 @@ public class DomainException extends RuntimeException {
     public ProblemDetail toProblemDetail() {
         var pb = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 
-        pb.setTitle("Internal Server Error");
+        pb.setTitle("Link Shortener - Internal Server Error");
 
         return pb;
     }

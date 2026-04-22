@@ -7,4 +7,5 @@ public final class Constants {
     }
 
     public static final String EMAIL_INDEX = "email-index";
+    public static final long TOKEN_EXPIRATION = 300L;
 }

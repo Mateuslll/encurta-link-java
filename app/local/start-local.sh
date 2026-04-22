@@ -22,7 +22,8 @@ aws --endpoint="http://localhost:4566" dynamodb create-table \
           {"AttributeName": "email", "KeyType": "HASH"}
         ],
         "Projection": {
-          "ProjectionType": "KEYS_ONLY"
+          "ProjectionType": "INCLUDE",
+          "NonKeyAttributes": ["password"]
         },
         "ProvisionedThroughput": {
           "ReadCapacityUnits": 5,
